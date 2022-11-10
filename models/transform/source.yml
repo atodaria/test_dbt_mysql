@@ -4,28 +4,36 @@ version: 2
 models:
   - name: stg_students
     description: "A student staging dbt model"
-    columns:
-      - name: student_id
-        description: "student id"
+    columns:      
+      - name: id
+        description: "id"        
         tests:
           - unique
           - not_null
+      - name: student_id
+        description: "student id"        
       - name: first_name
         description: "first name"        
       - name: last_name
         description: "last name"
-      - name: building
-        description: "building"
-      - name: school_district
-        description: "school district"
-      - name: grade
-        description: "grade"
+      - name: district_id
+        description: "District Id"
+      - name: school_id
+        description: "School Id"        
+      - name: grade_id
+        description: "Grade Id"
+      - name: primaryLanguage_Id
+        description: "Primary Language Id"
+      - name: birth_date
+        description: "Date of Birth"      
       - name: gender
         description: "gender"
-      - name: language
-        description: "language"
-      - name: dob
-        description: "dob"
+      - name: status
+        description: "status"
+      - name: created_at
+        description: "Date Created"
+      - name: updated_at
+        description: "Date Updated"    
 
   - name: stg_ieps
     description: "A ieps staging dbt model"
