@@ -37,7 +37,7 @@ models:
     - "{{ update_transform_log() }}"
   test_dbt_mysql:
     transform:
-      +materialized: table      
+      +materialized: incremental      
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
