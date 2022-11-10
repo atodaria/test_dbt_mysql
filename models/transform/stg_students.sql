@@ -1,5 +1,5 @@
 
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 
 with cte_students as (
@@ -20,13 +20,11 @@ left join portal.students as s on sd.`Student ID` = s.student_id
 and sd.`First Name` = s.first_name
 and sd.`Last Name` = s.last_name
 where s.student_id is null
-{% if is_incremental() %}
 and 
 (
 not exists (select 1 from {{ this }})     
 or sd.`_airbyte_normalized_at` > (select max(`updated_at`) from {{ this }})
 )
-{% endif %}
 )
 
 select     
